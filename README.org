@@ -47,6 +47,35 @@ http://bl.ocks.org/mjhoy/5301594
 - [ ] determine a good projection for hennepin county
 - [ ] come up with colorized relief info
 
+*** make sure =gdal= is installed
+
+On the mac:
+
+#+begin_src sh :exports code
+brew install gdal
+#+end_src
+
+*** what are in these zip files, anyway?
+
+Let's examine:
+
+#+begin_src sh :exports both :results verbatim
+ogrinfo 3542-32-23.gdb.zip
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Had to open data source read-only.
+INFO: Open of `3542-32-23.gdb.zip'
+      using driver `OpenFileGDB' successful.
+1: DEM01 (Multi Polygon)
+2: Hydro_Breaklines (Multi Polygon)
+3: Bare_Earth_Points (Multi Point)
+4: Contours (Multi Line String)
+5: contours_10 (Multi Line String)
+6: contours_50 (Multi Line String)
+7: buildings (Multi Polygon)
+#+end_example
 
 ** resources
 
