@@ -5,6 +5,39 @@ Generating a map on Minneapolis from open data.
 
 ** DONE write a makefile to download tiles (note: large files)
 
+The initial Makefile simply downloads tiles for me to play with. The
+FTP server (see below) has tiles broken into county, and to see which
+tiles I wanted, I looked at the tile map included (also see
+below).
+
+And so we end up with:
+
+#+BEGIN_SRC makefile :export code
+HENNEPIN_BASE_URL=ftp://ftp.lmic.state.mn.us/pub/data/elevation/lidar/county/hennepin/geodatabase/
+
+# This 4x4 set covers the area I want.
+MN_TILES=3542-32-23 3542-32-24 3542-32-25 3542-32-26 \
+         4342-01-23 4342-01-24 4342-01-25 4342-01-26 \
+         4342-02-23 4342-02-24 4342-02-25 4342-02-26 \
+         4342-03-23 4342-03-24 4342-03-25 4342-03-26
+
+MN_TILES_S=$(addsuffix .gdb.zip,$(MN_TILES))
+
+all: $(MN_TILES_S)
+
+$(MN_TILES_S):
+	curl $(HENNEPIN_BASE_URL)$@ -o $@
+#+END_SRC
+
+Running =make= will download the tiles, but note they are quite large:
+
+#+begin_src sh :exports both
+ls -l *.gdb.zip | awk '{s+=$5} END { print s / (1024 ^ 3) "G" }'
+#+end_src
+
+#+RESULTS:
+: 2.50411G
+
 ** TODO generate an image of the relief based on this data using gdal tools
 
 following along with these steps here:
