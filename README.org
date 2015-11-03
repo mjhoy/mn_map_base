@@ -32,11 +32,11 @@ $(MN_TILES_S):
 Running =make= will download the tiles, but note they are quite large:
 
 #+begin_src sh :exports both
-ls -l *.gdb.zip | awk '{s+=$5} END { print s / (1024 ^ 3) "G" }'
+ls -l *.gdb.zip | awk '{s+=$5} END {printf "%.1fG", s/1024 ^ 3}'
 #+end_src
 
 #+RESULTS:
-: 2.50411G
+: 2.5G
 
 ** TODO generate an image of the relief based on this data using gdal tools
 
