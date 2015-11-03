@@ -3,12 +3,6 @@
 
 Generating a map on Minneapolis from open data.
 
-Data set: [[http://www.mngeo.state.mn.us/chouse/elevation/lidar.html][LiDAR elevation data for Minnesota]]
-
-[[ftp://ftp.lmic.state.mn.us/pub/data/elevation/lidar/county/hennepin/][FTP site]]
-
-[[ftp://ftp.lmic.state.mn.us/pub/data/elevation/lidar/county/hennepin/hennepin_tile_index_map.pdf][Tile map for Hennepin county]]
-
 ** DONE write a makefile to download tiles (note: large files)
 
 ** TODO generate an image of the relief based on this data using gdal tools
@@ -19,3 +13,15 @@ http://bl.ocks.org/mjhoy/5301594
 
 - [ ] determine a good projection for hennepin county
 - [ ] come up with colorized relief info
+
+
+** resources
+
+- LiDAR Minnesota:
+  http://www.mngeo.state.mn.us/chouse/elevation/lidar.html
+
+- LiDAR FTP server:
+  ftp://ftp.lmic.state.mn.us/pub/data/elevation/lidar/county/hennepin/
+
+- Hennepin tile map [PDF]:
+  ftp://ftp.lmic.state.mn.us/pub/data/elevation/lidar/county/hennepin/hennepin_tile_index_map.pdf
