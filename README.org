@@ -3,7 +3,21 @@
 
 Generating a map on Minneapolis from open data.
 
-** DONE write a makefile to download tiles (note: large files)
+** relief map
+
+*** resources
+
+- LiDAR Minnesota:
+  http://www.mngeo.state.mn.us/chouse/elevation/lidar.html
+
+- LiDAR FTP server:
+  ftp://ftp.lmic.state.mn.us/pub/data/elevation/lidar/county/hennepin/
+
+- Hennepin tile map [PDF]:
+  ftp://ftp.lmic.state.mn.us/pub/data/elevation/lidar/county/hennepin/hennepin_tile_index_map.pdf
+
+
+*** DONE write a makefile to download tiles (note: large files)
 
 The initial Makefile simply downloads tiles for me to play with. The
 FTP server (see below) has tiles broken into county, and to see which
@@ -38,7 +52,7 @@ ls -l *.gdb.zip | awk '{s+=$5} END {printf "%.1fG", s/1024 ^ 3}'
 #+RESULTS:
 : 2.5G
 
-** TODO generate an image of the relief based on this data using gdal tools
+*** TODO generate an image of the relief based on this data using gdal tools
 
 following along with these steps here:
 
@@ -47,7 +61,7 @@ http://bl.ocks.org/mjhoy/5301594
 - [ ] determine a good projection for hennepin county
 - [ ] come up with colorized relief info
 
-*** make sure =gdal= is installed
+**** make sure =gdal= is installed
 
 On the mac:
 
@@ -55,7 +69,7 @@ On the mac:
 brew install gdal
 #+end_src
 
-*** what are in these zip files, anyway?
+**** what are in these zip files, anyway?
 
 Let's examine:
 
@@ -76,14 +90,3 @@ INFO: Open of `3542-32-23.gdb.zip'
 6: contours_50 (Multi Line String)
 7: buildings (Multi Polygon)
 #+end_example
-
-** resources
-
-- LiDAR Minnesota:
-  http://www.mngeo.state.mn.us/chouse/elevation/lidar.html
-
-- LiDAR FTP server:
-  ftp://ftp.lmic.state.mn.us/pub/data/elevation/lidar/county/hennepin/
-
-- Hennepin tile map [PDF]:
-  ftp://ftp.lmic.state.mn.us/pub/data/elevation/lidar/county/hennepin/hennepin_tile_index_map.pdf
